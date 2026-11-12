@@ -1,7 +1,7 @@
-VIS_PR6_OS.csproj
-.gitignore
-.gitattributes
-obj/
-bin/
+# Папки сборки и IDE Visual Studio
 .vs/
-.git/
+bin/
+obj/
+
+# Если input1.txt — это тестовые данные, а не часть задания, его тоже можно скрыть
+# input1.txt
