@@ -3,3 +3,5 @@ VIS_PR6_OS.csproj
 .gitattributes
 obj/
 bin/
+.vs/
+.git/
