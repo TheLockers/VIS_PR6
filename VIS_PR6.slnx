@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="VIS_PR6/VIS_PR6_Command1.csproj" />
+  <Project Path="VIS_PR6_Command2/VIS_PR6_Command2.csproj" Id="a8350da5-77ea-4116-8976-568e098be987" />
+  <Project Path="VIS_PR6_Command3/VIS_PR6_Command3.csproj" Id="d866d4d4-c179-4d54-8f34-faf310bdc61b" />
+  <Project Path="VIS_PR6_Command4/VIS_PR6_Command4.csproj" Id="db63785e-44c7-409a-990f-917d60eead2c" />
+  <Project Path="VIS_PR6_Command5/VIS_PR6_Command5.csproj" Id="ad0bef13-ce57-4a73-aaf7-97d35c6e5320" />
+  <Project Path="VIS_PR6_OS.Tests/VIS_PR6_OS.Tests.csproj" Id="74080441-a9ae-49b0-a840-d925e5bb81a0" />
+  <Project Path="VIS_PR6_OS/VIS_PR6_OS.csproj" Id="cd865c36-991b-4193-92ec-70c3aa8da760" />
+</Solution>
