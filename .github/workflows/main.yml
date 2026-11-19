@@ -1,0 +1,24 @@
+name: .NET Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        run: dotnet restore VIS_PR6.slnx
+
+      - name: Run tests
+        run: dotnet test VIS_PR6.slnx --no-restore
