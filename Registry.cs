@@ -1,5 +1,7 @@
 ﻿// Класс Регистрации анкет и ошибок
-class Registry
+using System.Collections;
+
+public class Registry : IEnumerable<Person>
 {
     private readonly List<Person> _people = new List<Person>();
     private readonly List<(int Line, string Raw, string Reason)> _errors = new List<(int Line, string Raw, string Reason)>();
@@ -63,6 +65,16 @@ class Registry
     }
 
     public int Count => _people.Count;
+
+    public IEnumerator<Person> GetEnumerator()
+    {
+        return _people.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 
     public IReadOnlyList<Person> People => _people;
     public IReadOnlyList<(int, string, string)> Errors => _errors;

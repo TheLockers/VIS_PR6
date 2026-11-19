@@ -1,11 +1,11 @@
 ﻿// Класс ошибки AnketaError
-class AnketaError : Exception
+public class AnketaError : Exception
 {
     public AnketaError(string message) : base(message) { }
 }
 
 // Класс Person родительский класс
-class Person : IComparable<Person>
+public class Person : IComparable<Person>
 {
     private string _fullName = string.Empty;
     private string _email = string.Empty;
@@ -38,12 +38,13 @@ class Person : IComparable<Person>
         if (parts.Length is < 2 or > 3)
             throw new AnketaError("Ожидается 2 формы ФИО: 'Фамилия Имя', 'Фамилия Имя Отчество'.");
 
-        if (parts.Any(p => !p.All(char.IsLetter)))
-            throw new AnketaError("ФИО должно содержать только буквы.");
+        if (parts.Any(p => !p.Split('-').All(part => part.Length > 0 && part.All(char.IsLetter))))
+            throw new AnketaError("ФИО должно содержать только буквы и дефис между частями.");
 
         // валидация ФИО
-        static string Normalize(string s) =>
-            char.ToUpper(s[0]) + s[1..].ToLower();
+        static string Normalize(string s) => 
+            string.Join("-", s.Split('-').Select(part =>
+            char.ToUpper(part[0]) + part[1..].ToLower()));
 
         string surname = Normalize(parts[0]);
         string name = Normalize(parts[1]);
@@ -100,7 +101,7 @@ class Person : IComparable<Person>
                 throw new AnketaError("Домен не должен содержать спец символов.");
         }
 
-        return local + '@' + domain;
+        return (local + '@' + domain).ToLower();
     }
     private static string ValidationPhone(string value)
     {
@@ -159,7 +160,7 @@ class Person : IComparable<Person>
 }
 
 // Класс Студента наследуемый Person
-class Student : Person
+public class Student : Person
 {
     public string Group { get; }
 
@@ -168,7 +169,7 @@ class Student : Person
     {
         // проверка целостности группы
         if (string.IsNullOrWhiteSpace(group))
-            throw new AnketaError("Группа не можеты быть пустой.");
+            throw new AnketaError("Группа не может быть пустой.");
 
         Group = group.Trim();
     }
@@ -180,7 +181,7 @@ class Student : Person
 }
 
 // Класс Учителя наследуемый Person
-class Teacher : Person
+public class Teacher : Person
 {
     // Поле кафедры
     public string Department { get; }
